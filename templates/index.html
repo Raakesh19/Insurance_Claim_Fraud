@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <br>
+  <title>Insurance Claim Fraud Detection App</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+
+  
+</head>
+
+<body>
+ <div class="container">
+	<h1>Insurance Claim Fraud Detection App</h1>
+
+     <br>
+     <br>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <label for="a">Months_As_Customer</label>
+            <input type="number" id="a" name="months_as_customer" placeholder="Months_As_Customer">
+        <label for="b">Age</label>
+            <input type="number" id="b" name="age" placeholder="Age">
+            <br>
+            <Br>
+        <label for="c">Umbrella_limit</label>
+            <input type="number" id="c" name="umbrella_limit" placeholder="Umbrella_limit">
+        <label for="d">Incident Severity</label>
+            <input type="text" id="d" list="dl1" name="incident_severity" placeholder="Incident Severity">
+            <datalist id="dl1">
+                <option value="Minor Damage">
+                <option value="Total Damage">
+                <option value="Major Damage">
+                <option value="Trivial Damage">
+            </datalist>
+            <br>
+            <br>
+        <label for="e">Bodily_Injuries</label>
+            <input type="number" id="e" name="bodily_injuries" placeholder="Bodily_Injuries">
+        <label for="f"> Police_Report_Available</label>
+            <input type="text" id="f" list="dl2"name="police_report_avaliable" placeholder=" Police_Report_Available">
+            <datalist id="dl2">
+                <option value="YES">
+                <option value="NO">
+            </datalist>
+            <br>
+            <br>
+        <label for="g">Total_Claim_Amount</label>
+            <input type="number" id="g" name="total_claim_amount" placeholder="Total_Claim_Amount">    
+        <label for="h">Injury Claim</label>
+            <input type="number" id="h" name="injury_claim" placeholder="Injury Claim">
+            <br>
+            <br>
+        <label for="i">Vehicle Claim</label>
+            <input type="number" id="i" name="vehicle_claim" placeholder="Vehicle Claim">    
+            <br>
+            <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+    
+ </div>
+ <h3>{{prediction_text}}</h3>
+
+</body>
+</html>
